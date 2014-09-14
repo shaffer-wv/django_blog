@@ -1,0 +1,9 @@
+{% extends "blogengine/includes/base.html" %}
+
+{% block content %}
+	<ul>
+		{% for post in object_list %}
+			<li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a>, <small><em>{{ post.pub_date|date:"F j, Y" }}</em></small></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

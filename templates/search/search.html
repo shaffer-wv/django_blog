@@ -1,0 +1,36 @@
+{% extends "blogengine/includes/base.html" %}
+
+{% block content %}
+	
+	<h2>Search</h2>
+
+	<form method="get" action=".">
+		<table>
+			<input type="test" name="q">
+			<button type="submit">Search</button>
+		</table>
+
+		{% if query %}
+			<br>
+			<h3>Results</h3>
+
+			{% for result in page.object_list %}
+				<p><a href="{{ result.object.get_absolute_url }}">{{ result.object.title }}</a> posted on {{ result.object.pub_date }}</p>
+			{% empty %}
+				<p>No results found.</p>
+			{% endfor %}
+		{% endif %}
+
+	</form>	
+{% endblock %}
+
+<!--
+	{{ form.as_table }}
+			<tr>
+				<td>&nbsp;</td>
+				<td>
+					<input type="submit" value="Search">
+				</td>
+			</tr>
+
+		-->
